@@ -1,5 +1,9 @@
+const chkTemplate = "<div id=\"[div_id]\"><input type=\"checkbox\" id=\"[chk_id]\" onclick=\"checkOff('[div_id]')\"><label for=\"[chk_id]\">[chk_txt]</label></div>"
+
 async function viewList() {
+  checkList("list")
   listArr = localStorage.getItem("list").split('\n');
+
   var listDiv = document.getElementById("list-content");
   listDiv.innerHTML = "";
   for (i = 0; i < listArr.length; i++) {
@@ -11,6 +15,7 @@ async function viewList() {
   await openModal('listModal')
 }
 
+//Check the items off the list: move them to the bottom just in case you need to refer to them. 
 function checkOff(id) {
   var chk = document.getElementById(id)
   var chkBox = document.getElementById(id.replace('_div', ''))
@@ -21,5 +26,12 @@ function checkOff(id) {
   }
   else {
     start.appendChild(chk)
+  }
+}
+
+//This allows me to make sure that any localStorage item exists before trying to call it
+function checkList(item) {
+  if (!(item in localStorage) || localStorage.getItem(item) !== null) {
+    localStorage.setItem(item, "")
   }
 }

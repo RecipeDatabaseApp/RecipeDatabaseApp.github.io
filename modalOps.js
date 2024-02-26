@@ -1,4 +1,3 @@
-const chkTemplate = "<div id=\"[div_id]\"><input type=\"checkbox\" id=\"[chk_id]\" onclick=\"checkOff('[div_id]')\"><label for=\"[chk_id]\">[chk_txt]</label></div>"
 
 async function openModal(modalName) {
   var modal = document.getElementById(modalName);
