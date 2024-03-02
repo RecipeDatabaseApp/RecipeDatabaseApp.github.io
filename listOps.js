@@ -39,7 +39,7 @@ function checkOff(id) {
 //This allows me to make sure that any localStorage item exists before trying to call it
 function checkList(item) {
   console.log(localStorage.getItem("list").split('\n'))
-  if (!(item in localStorage) || localStorage.getItem(item) !== null) {
+  if (!(item in localStorage) || localStorage.getItem(item) === null) {
     localStorage.setItem(item, "")
   }
 }
