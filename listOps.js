@@ -15,6 +15,13 @@ async function viewList() {
   await openModal('listModal')
 }
 
+function addToGroceryList() {
+  var ingredients = document.getElementById("ingredientsText");
+  checkList("list")
+  var currList = localStorage.getItem("list")
+  localStorage.setItem("list", currList + '\n' + ingredients)
+}
+
 //Check the items off the list: move them to the bottom just in case you need to refer to them. 
 function checkOff(id) {
   var chk = document.getElementById(id)
@@ -31,6 +38,7 @@ function checkOff(id) {
 
 //This allows me to make sure that any localStorage item exists before trying to call it
 function checkList(item) {
+  console.log(localStorage.getItem("list").split('\n'))
   if (!(item in localStorage) || localStorage.getItem(item) !== null) {
     localStorage.setItem(item, "")
   }
