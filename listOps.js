@@ -2,24 +2,25 @@ const chkTemplate = "<div id=\"[div_id]\"><input type=\"checkbox\" id=\"[chk_id]
 
 async function viewList() {
   checkList("list")
-  listArr = localStorage.getItem("list").split('\n');
+  list = localStorage.getItem("list");
 
   var listDiv = document.getElementById("list-content");
-  listDiv.innerHTML = "";
-  for (i = 0; i < listArr.length; i++) {
-    if (listArr[i].length > 2) {
-      var divID = i + "_div";
-      listDiv.innerHTML = listDiv.innerHTML + chkTemplate.replaceAll('[chk_id]', i + "").replaceAll('[chk_txt]', listArr[i]).replaceAll('[div_id]', divID);
-    }
-  }
+  listDiv.innerHTML = list;
   await openModal('listModal')
 }
 
 function addToGroceryList() {
-  var ingredients = document.getElementById("ingredientsText");
+  var ingredients = document.getElementById("ingredientsText").innerText.split('\n');
+  console.log(ingredients)
   checkList("list")
   var currList = localStorage.getItem("list")
-  localStorage.setItem("list", currList + '\n' + ingredients)
+  for (i = 0; i < ingredients.length; i++) {
+    if (ingredients[i].length > 2) {
+      var divID = i + "_div";
+      currList = currList + chkTemplate.replaceAll('[chk_id]', i + "").replaceAll('[chk_txt]', ingredients[i]).replaceAll('[div_id]', divID);
+    }
+  }
+  localStorage.setItem("list", currList)
 }
 
 //Check the items off the list: move them to the bottom just in case you need to refer to them. 
@@ -42,4 +43,8 @@ function checkList(item) {
   if (!(item in localStorage) || localStorage.getItem(item) === null) {
     localStorage.setItem(item, "")
   }
+}
+
+function clearList() {
+
 }
