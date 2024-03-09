@@ -24,7 +24,7 @@ async function getFullRecipe(id) {
 
   var addToList = document.getElementById("addToListBtn");
   addToList.onclick = function() {
-    checkList("list")
+    itemExists("list")
     localStorage.setItem("list", localStorage.getItem("list") + "\n" + document.getElementById("ingredientsText").innerHTML);
   }
 }
