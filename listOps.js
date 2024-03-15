@@ -41,7 +41,7 @@ function checkOff(id) {
   }
 
   itemExists("list")
-  localStorage.setItem(list, start.innerHTML)
+  localStorage.setItem("list", start.innerHTML)
   console.log(chk)
 }
 
@@ -49,7 +49,7 @@ function checkOff(id) {
 function itemExists(item) {
   console.log(localStorage.getItem("list"))
   if (!(item in localStorage) || localStorage.getItem(item) === null) {
-    localStorage.setItem(item, "")
+    localStorage.setItem("item", "")
   }
 }
 
@@ -60,7 +60,7 @@ function clearChecked() {
     checks[0].remove();
   }
   itemExists("list")
-  localStorage.setItem(list, start.innerHTML)
+  localStorage.setItem("list", start.innerHTML)
   console.log(start.innerHTML)
 }
 
@@ -68,5 +68,5 @@ function clearAll() {
   var start = document.getElementById("list-content");
   start.innerHTML = "";
   itemExists("list")
-  localStorage.setItem(list, "");
+  localStorage.setItem("list", "");
 }
