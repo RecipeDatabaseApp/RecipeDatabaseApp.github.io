@@ -63,3 +63,10 @@ function clearChecked() {
   localStorage.setItem(list, start.innerHTML)
   console.log(start.innerHTML)
 }
+
+function clearAll() {
+  var start = document.getElementById("list-content");
+  start.innerHTML = "";
+  itemExists("list")
+  localStorage.setItem(list, "");
+}
