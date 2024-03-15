@@ -49,7 +49,7 @@ function checkOff(id) {
 function itemExists(item) {
   console.log(localStorage.getItem("list"))
   if (!(item in localStorage) || localStorage.getItem(item) === null) {
-    localStorage.setItem("item", "")
+    localStorage.setItem(item, "")
   }
 }
 
@@ -69,4 +69,5 @@ function clearAll() {
   start.innerHTML = "";
   itemExists("list")
   localStorage.setItem("list", "");
+  console.log(localStorage.getItem("list"))
 }
